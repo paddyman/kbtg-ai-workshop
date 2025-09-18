@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KBTG</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #0f172a;
+        margin: 0;
+      }
+      h1 {
+        font-size: 6rem;
+        font-family: Arial, Helvetica, sans-serif;
+        display: flex;
+        gap: 15px;
+      }
+      span {
+        opacity: 0.3;
+        transform: scale(0.8);
+        display: inline-block;
+        transition: all 0.5s ease;
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      }
+      #k { color: #ef4444; }
+      #b { color: #3b82f6; }
+      #t { color: #22c55e; }
+      #g { color: #eab308; }
+
+      .active {
+        opacity: 1;
+        transform: scale(1.2);
+        text-shadow: 0 0 25px currentColor, 0 0 50px currentColor;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      <span id="k">K</span>
+      <span id="b">B</span>
+      <span id="t">T</span>
+      <span id="g">G</span>
+    </h1>
+    <script>
+      const letters = ["k", "b", "t", "g"];
+      let index = 0;
+
+      setInterval(() => {
+        letters.forEach((id, i) => {
+          const el = document.getElementById(id);
+          el.classList.remove("active");
+          if (i === index) {
+            setTimeout(() => el.classList.add("active"), 50);
+          }
+        });
+        index = (index + 1) % letters.length;
+      }, 600);
+    </script>
+  </body>
+</html>
